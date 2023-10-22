@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 --- 
-=======
-i--- 
->>>>>>> main
 - hosts: "{{ target | default('localhost') }}" 
   become: yes 
   roles: 
