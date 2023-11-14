@@ -28,7 +28,7 @@ try:
     from boto.s3.connection import Location
     from boto.utils import get_instance_metadata
 except ImportError:
-    print "failed=True msg='boto required for this module'"
+    print("failed=True msg='boto required for this module'")
     sys.exit(1)
 
 # Determine if we're running on an EC2 instance
