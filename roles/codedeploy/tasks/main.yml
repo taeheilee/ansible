@@ -1,0 +1,41 @@
+---
+# tasks file for codedeploy
+- name: Update YUM
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install Ruby
+  yum:
+    name: ruby
+    state: present
+
+- name: Install wget
+  yum:
+    name: wget
+    state: present
+
+- name: Download CodeDeploy installation script
+  get_url:
+    url: https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+    dest: /tmp/install
+    tags: codedeploy
+
+- name: Make installation script executable
+  file:
+    path: /tmp/install
+    mode: 'u+x'
+    tags: codedeploy
+
+- name: Run CodeDeploy installation script
+  command: "/tmp/install auto"
+  args:
+    chdir: /tmp
+    tags: codedeploy
+
+- name: Start CodeDeploy agent service
+  service:
+    name: codedeploy-agent
+    state: started
+    tags: codedeploy
+
