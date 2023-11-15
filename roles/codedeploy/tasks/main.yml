@@ -19,7 +19,6 @@
   get_url:
     url: https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
     dest: /tmp/install
-    tags: codedeploy
 
 - name: Make installation script executable
   file:
